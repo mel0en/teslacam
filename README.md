@@ -40,7 +40,19 @@ Using a couple of tricks I've learned through tinkering with various single boar
 1. Modify the `/boot` partition to [enable USB OTG](https://gist.github.com/gbaman/975e2db164b3ca2b51ae11e45e8fd40a).
    - Add `dtoverlay=dwc2` as a new line to the bottom of `config.txt`
    - Enable g_mass_storage and dw2 by adding `modules-load=dwc2,g_mass_storage` right after `rootwait` in `cmdline.txt`
-1. Add your [WIFI configuration details](https://www.raspberrypi-spy.co.uk/2017/04/manually-setting-up-pi-wifi-using-wpa_supplicant-conf/) (consider adding several, including a portable hotspot such as your phone)
+1. Add your WIFI settings to a new file called `wpa_supplicant.conf` containing the information below. Chane county, ssid and pask accordingly.
+   ```
+   country=US
+   ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+   update_config=1
+   
+   network={
+       ssid="your_real_wifi_ssid"
+       scan_ssid=1
+       psk="your_real_password"
+       key_mgmt=WPA-PSK
+   }
+   ```
 1. Enable ssh by adding an empty file called `ssh` on the `/boot` partition
 
 ### On your TeslaCam Pi (via SSH)
