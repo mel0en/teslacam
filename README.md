@@ -58,9 +58,13 @@ Using a couple of tricks I've learned through tinkering with various single boar
 ### On your TeslaCam Pi (via SSH)
 
 1. Plug the Pi Zero W into the Tesla media USB ports (the front ports). Make sure you use the data port on the Pi, google if you are unsure.
-1. Connect to the Pi
+1. Connect to the Pi. 
    ```
    $ ssh pi@raspberrypi.local
+   ```
+1. Default password is raspberry. Change the standard password.
+   ```
+   $ passwd
    ```
 1. Execute the get-teslacam script, this should install everything you need to get up and running.
 
